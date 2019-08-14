@@ -1,0 +1,37 @@
+>>> f.tell
+<built-in method tell of _io.TextIOWrapper object at 0x0000000002DEA1F8>
+>>> f.tell()
+0
+>>> f.seek(45,0)
+45
+>>> f.tell()
+45
+>>> f.seek(45,2)
+Traceback (most recent call last):
+  File "<pyshell#77>", line 1, in <module>
+    f.seek(45,2)
+io.UnsupportedOperation: can't do nonzero end-relative seeks
+>>> list(f)
+[]
+>>> open('abc.txt')
+Traceback (most recent call last):
+  File "<pyshell#79>", line 1, in <module>
+    open('abc.txt')
+FileNotFoundError: [Errno 2] No such file or directory: 'abc.txt'
+>>> open('abc.txt','w+')
+<_io.TextIOWrapper name='abc.txt' mode='w+' encoding='cp936'>
+>>> for i in list(f):
+	print(i)
+
+
+>>> f=open('E:/test.txt','w')
+>>> f.write('我爱你')
+3
+>>> f.close()
+>>>  f=open('E:\\test1.txt','w')
+SyntaxError: unexpected indent
+>>> f=open('E:\\test1.txt','w')
+>>> f.write('我奥你')
+3
+f.close()
+>>>
