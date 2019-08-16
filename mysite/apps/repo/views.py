@@ -97,3 +97,28 @@ class QuestionDetail(DetailView,UserLog):
         return JsonResponse(result)
 
 
+from django.http.response import HttpResponse
+from django.http import JsonResponse
+from django.views.generic import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Category, Questions, Answers, UserLog
+from django.core import serializers
+
+class Question(LoginRequiredMixin, View):
+    def post(self, request):
+        print(request.POST)
+        try:
+            title = request.POST.get("title")
+            category = request.POST.get("category")
+            content = request.POST.get("content")
+            if category:
+                Questions.objects.create(title=title, category_id=category, content=content, contributor=request.user)
+            else:
+                Questions.objects.create(title=title, content=content, contributor=request.user)
+        except Exception as ex:
+            logger.error(ex)
+            return HttpResponse("提交失败!")
+        return HttpResponse("提交成功")
+
+# form全局commit
+# ajax提交form

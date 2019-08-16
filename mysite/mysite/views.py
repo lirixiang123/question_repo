@@ -7,3 +7,15 @@ def logtest(request):
     return HttpResponse("日志测试")
 def test(request):
     return render(request,'test.html')
+
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from apps.repo.models import Questions
+def paginator(request):
+    objects=Questions.objects.all()
+    p=Paginator(objects,25)
+    page=request.GET.get('page')
+
+    contacts =p.page(page)
+
+    return render(request,'paginator.html',locals())

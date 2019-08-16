@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^test/',views.test,name='test'),
     url(r'^uc/', include('apps.usercenter.urls', namespace='uc')),
-
+    url(r'^paginator/',views.paginator,name='paginator')
 
 ]

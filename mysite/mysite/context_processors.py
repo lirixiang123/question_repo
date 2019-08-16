@@ -10,4 +10,5 @@ def site_info(request):
     # site["PRO_GIT"] = settings.PRO_GIT
     # site["PRO_RSS"] = settings.PRO_RSS
     # site["WEIBO_URL"] = settings.WEIBO_URL
+
     return locals()

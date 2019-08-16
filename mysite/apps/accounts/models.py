@@ -44,3 +44,10 @@ class User(AbstractUser):
             # 保存字段值
             self.avator_sm = ImageFieldFile(self, self.avator_sm, relate_thumb_path)
         super().save()  # 再保存一下，包括缩略图等
+
+
+class FindPassword(models.Model):
+    verify_code = models.CharField(max_length=128, verbose_name="验证码")
+    email = models.EmailField(verbose_name="邮箱")
+    creat_time = models.DateTimeField(auto_now=True, verbose_name="重置时间")
+    status = models.BooleanField(default=False, verbose_name="是否已重置")

@@ -90,7 +90,10 @@
               <section class="wrapper">
                 <!-- page start-->
                 <div class="row">
-                    {% block content %}这是BASE页面{% endblock %}
+                    {% block content %}
+                {% include 'contribute_models.html' %}
+                        这是BASE页面
+                    {% endblock %}
                 </div>
                 <!-- page end-->
               </section>
@@ -98,7 +101,7 @@
           <!--main content end-->
           </section>
     </div>
-    {% include 'crontribute_modal.html' %}
+{% include 'contribute_models.html' %}
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

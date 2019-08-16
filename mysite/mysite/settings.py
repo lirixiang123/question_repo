@@ -83,13 +83,22 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+import os
+env = os.environ.get('ENV', None)
+if env == 'prod':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db_prod.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -301,3 +310,16 @@ if not os.path.exists(MEDIA_ROOT):
 
 # 修改上传文件大小（Default: 2621440 (i.e. 2.5 MB).）
 DATA_UPLOAD_MAX_MEMORY_SIZE = 2621440*10
+DEFAULT_FROM_EMAIL = '565539277@qq.com'
+
+# 163邮箱SMTP服务器地址
+EMAIL_HOST = 'smtp.qq.com'
+# 发件人的邮箱
+EMAIL_HOST_USER = '565539277@qq.com'
+# 发件人邮箱密码
+EMAIL_HOST_PASSWORD = 'gzndzolqprmdbdfg'
+# tls协议，有True和False两种情况
+EMAIL_USE_TLS = True
+# 发件人的邮箱
+EMAIL_FROM = '565539277@qq.com'
+
